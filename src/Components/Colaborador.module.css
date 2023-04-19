@@ -1,6 +1,4 @@
 .article {
-  max-width: 800px;
-  min-width: 680px;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;

@@ -1,3 +1,14 @@
+.home {
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  margin: 32px;
+  padding: 32px;
+  border-radius: 16px;
+  background-color: antiquewhite;
+  box-shadow: 0px 4px 12px #00000027;
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -7,9 +18,57 @@
 .frase {
   margin-left: 8px;
   font: bold 1.8em "Lora", "Roboto", sans-serif;
+  letter-spacing: 1px;
+  color: #333;
 }
 
 .coffee {
   width: 80px;
   height: 80px;
+}
+
+.botaoAdicionar {
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  right: 60px;
+  bottom: 60px;
+  color: #333;
+}
+
+.botaoAdicionar:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+  .home {
+    width: 640px;
+  }
+
+  .botaoAdicionar {
+    right: 40px;
+    bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .home {
+    width: 480px;
+  }
+
+  .botaoAdicionar {
+    right: 24px;
+    bottom: 24px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .home {
+    width: 20px;
+  }
+
+  .botaoAdicionar {
+    right: 24px;
+    bottom: 24px;
+  }
 }
