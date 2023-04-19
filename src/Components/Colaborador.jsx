@@ -1,4 +1,5 @@
 import { MdCreate } from "react-icons/md";
+import { Link } from "react-router-dom";
 import styles from "./Colaborador.module.css";
 
 function Colaborador() {
@@ -12,7 +13,9 @@ function Colaborador() {
       <div className={styles.nomeCpf}>
         <div className={styles.nome}>
           <h2>{nome}</h2>
-          <button className={styles.atualizacao}>{<MdCreate />}</button>
+          <Link to={"/edicao"} className={styles.atualizacao}>
+            {<MdCreate />}
+          </Link>
         </div>
         <p className={styles.cpf}>{cpf}</p>
       </div>

@@ -1,6 +1,7 @@
 import coffee from "./assets/coffee.svg";
 import Colaborador from "./Components/Colaborador";
 import { MdAddCircle } from "react-icons/md";
+import { Link } from "react-router-dom";
 import styles from "./App.module.css";
 
 function App() {
@@ -16,7 +17,9 @@ function App() {
         <Colaborador />
       </main>
 
-      <MdAddCircle className={styles.botaoAdicionar} />
+      <Link to="/edicao">
+        <MdAddCircle className={styles.botaoAdicionar} />
+      </Link>
     </div>
   );
 }
