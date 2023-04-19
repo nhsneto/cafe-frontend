@@ -12,7 +12,7 @@ function Colaborador() {
       <div className={styles.nomeCpf}>
         <div className={styles.nome}>
           <h2>{nome}</h2>
-          <a href="" className={styles.atualizacao}>{<MdCreate />}</a>
+          <button className={styles.atualizacao}>{<MdCreate />}</button>
         </div>
         <p className={styles.cpf}>{cpf}</p>
       </div>
@@ -29,7 +29,7 @@ function Colaborador() {
           </label>
         </div>
         <div>
-          <input type="radio" name="trouxe" id="naoTrouxe" defaultChecked/>
+          <input type="radio" name="trouxe" id="naoTrouxe" defaultChecked />
           <label htmlFor="naoTrouxe" className={styles.labelNaoTrouxe}>
             Não Trouxe
           </label>
