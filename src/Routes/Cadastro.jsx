@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import InputMask from "react-input-mask";
 import { MdAddCircle } from "react-icons/md";
 import { FaTrash } from "react-icons/fa";
 import styles from "./Cadastro.module.css";
