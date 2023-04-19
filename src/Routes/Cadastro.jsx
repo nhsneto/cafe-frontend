@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
-import { MdAddCircle } from "react-icons/md";
-import { FaTrash } from "react-icons/fa";
+import { useState } from "react";
 import styles from "./Cadastro.module.css";
+import { useLocation } from "react-router-dom";
+import Input from "../Components/Input";
+import InputOpcoes from "../Components/InputOpcoes";
 
 function Cadastro() {
   const [nome, setNome] = useState("");
@@ -9,6 +10,8 @@ function Cadastro() {
   const [dataCafe, setDataCafe] = useState("");
   const [opcao, setOpcao] = useState("");
   const [opcoes, setOpcoes] = useState([]);
+
+  const location = useLocation().pathname;
 
   function getDataDeAmanha() {
     const data = new Date();
@@ -25,22 +28,19 @@ function Cadastro() {
     return `${ano}-${mes}-${dia}`;
   }
 
-  function isOpcaoExistente(opcao, opcoes) {
-    for (const current of opcoes) {
-      if (current.toUpperCase() === opcao.toUpperCase()) {
-        return true;
-      }
-    }
-
-    return false;
-  }
-
   function formataOpcoes(opcoes) {
     const arr = [];
     for (const opcao of opcoes.toSorted()) {
       arr.push({ nome: opcao });
     }
     return arr;
+  }
+
+  function clearInputs() {
+    setNome("");
+    setCpf("");
+    setDataCafe("");
+    setOpcoes([]);
   }
 
   function adicionaColaborador(e) {
@@ -64,90 +64,51 @@ function Cadastro() {
     // }, []);
 
     console.log(JSON.stringify(colaborador));
+    console.log(location);
+
+    clearInputs();
   }
 
   return (
     <div className={styles.container}>
       <h1>Adicionar Colaborador</h1>
-      <form onSubmit={adicionaColaborador}>
-        <div>
-          <label htmlFor="nome">Nome</label>
-          <input
-            id="nome"
-            type="text"
-            placeholder="Nome Sobrenome"
-            value={nome}
-            onChange={(e) => {
-              setNome(e.target.value);
-            }}
-          />
-        </div>
+      <form onSubmit={adicionaColaborador} className={styles.form}>
+        <Input
+          label="Nome"
+          id="nome"
+          type="text"
+          placeholder="Nome Sobrenome"
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
+        />
 
-        <div>
-          <label htmlFor="cpf">CPF</label>
-          <input
-            id="cpf"
-            type="text"
-            maxLength="11"
-            pattern="[0-9]{11}"
-            title="CPF com 11 caracteres numéricos."
-            value={cpf}
-            onChange={(e) => setCpf(e.target.value)}
-          />
-        </div>
+        <Input
+          label="CPF"
+          id="cpf"
+          type="text"
+          maxLength="11"
+          pattern="[0-9]{11}"
+          title="O CPF deve conter 11 caracteres numéricos."
+          value={cpf}
+          onChange={(e) => setCpf(e.target.value)}
+        />
 
-        <div>
-          <label htmlFor="dataCafe">Data do Café</label>
-          <input
-            id="dataCafe"
-            type="date"
-            min={getDataDeAmanha()}
-            value={dataCafe}
-            onChange={(e) => setDataCafe(e.target.value)}
-          />
-        </div>
+        <Input
+          label="Data do Café"
+          id="dataCafe"
+          type="date"
+          title="A data de realização do café deve ser maior que a data atual."
+          min={getDataDeAmanha()}
+          value={dataCafe}
+          onChange={(e) => setDataCafe(e.target.value)}
+        />
 
-        <div className={styles.opcoesContainer}>
-          <div>
-            <label htmlFor="opcao">Opção</label>
-            <input
-              id="opcao"
-              type="text"
-              placeholder="Pão"
-              value={opcao}
-              onChange={(e) => setOpcao(e.target.value)}
-            />
-            <MdAddCircle
-              className={styles.botaoAdicionar}
-              onClick={() => {
-                if (opcao && !isOpcaoExistente(opcao, opcoes)) {
-                  setOpcoes([...opcoes, opcao]);
-                }
-                setOpcao("");
-              }}
-            />
-          </div>
-          <div>
-            <ul>
-              {opcoes.map((opcao, i) => (
-                <li key={i}>
-                  {opcao}{" "}
-                  <FaTrash
-                    className={styles.lixeira}
-                    onClick={() =>
-                      setOpcoes(
-                        opcoes.filter(
-                          (item) => item.toLowerCase() !== opcao.toLowerCase()
-                        )
-                      )
-                    }
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
+        <InputOpcoes
+          opcao={opcao}
+          opcaoList={opcoes}
+          setterOpcaoList={setOpcoes}
+          onChange={(e) => setOpcao(e.target.value)}
+        />
         <input type="submit" value="Adicionar" />
       </form>
     </div>
