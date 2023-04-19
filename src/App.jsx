@@ -17,7 +17,7 @@ function App() {
         <Colaborador />
       </main>
 
-      <Link to="/edicao">
+      <Link to="/cadastro">
         <MdAddCircle className={styles.botaoAdicionar} />
       </Link>
     </div>
