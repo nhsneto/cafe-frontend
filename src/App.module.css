@@ -1,4 +1,4 @@
-.home {
+.app {
   width: 1000px;
   display: flex;
   flex-direction: column;
@@ -41,7 +41,7 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .home {
+  .app {
     width: 640px;
   }
 
@@ -52,7 +52,7 @@
 }
 
 @media screen and (max-width: 720px) {
-  .home {
+  .app {
     width: 480px;
   }
 
@@ -63,7 +63,7 @@
 }
 
 @media screen and (max-width: 414px) {
-  .home {
+  .app {
     width: 20px;
   }
 
