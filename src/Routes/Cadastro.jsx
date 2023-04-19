@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InputMask from "react-input-mask";
+import { MdAddCircle } from "react-icons/md";
+import { FaTrash } from "react-icons/fa";
 import styles from "./Cadastro.module.css";
 
 function Cadastro() {
   const [nome, setNome] = useState("");
   const [cpf, setCpf] = useState("");
   const [dataCafe, setDataCafe] = useState("");
+  const [opcao, setOpcao] = useState("");
+  const [opcoes, setOpcoes] = useState([]);
 
   function getDataDeAmanha() {
     const data = new Date();
@@ -22,7 +26,46 @@ function Cadastro() {
     return `${ano}-${mes}-${dia}`;
   }
 
-  function adicionaColaborador() {}
+  function isOpcaoExistente(opcao, opcoes) {
+    for (const current of opcoes) {
+      if (current.toUpperCase() === opcao.toUpperCase()) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  function formataOpcoes(opcoes) {
+    const arr = [];
+    for (const opcao of opcoes.toSorted()) {
+      arr.push({ nome: opcao });
+    }
+    return arr;
+  }
+
+  function adicionaColaborador(e) {
+    e.preventDefault();
+
+    const colaborador = {
+      nome: nome,
+      cpf: cpf,
+      opcoes: formataOpcoes(opcoes),
+      data: dataCafe,
+    };
+
+    // useEffect(() => {
+    //   fetch("http://localhost:8080/colaboradores", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(colaborador),
+    //   });
+    // }, []);
+
+    console.log(JSON.stringify(colaborador));
+  }
 
   return (
     <div className={styles.container}>
@@ -43,10 +86,12 @@ function Cadastro() {
 
         <div>
           <label htmlFor="cpf">CPF</label>
-          <InputMask
+          <input
             id="cpf"
             type="text"
-            mask="999.999.999-99"
+            maxLength="11"
+            pattern="[0-9]{11}"
+            title="CPF com 11 caracteres numéricos."
             value={cpf}
             onChange={(e) => setCpf(e.target.value)}
           />
@@ -62,6 +107,49 @@ function Cadastro() {
             onChange={(e) => setDataCafe(e.target.value)}
           />
         </div>
+
+        <div className={styles.opcoesContainer}>
+          <div>
+            <label htmlFor="opcao">Opção</label>
+            <input
+              id="opcao"
+              type="text"
+              placeholder="Pão"
+              value={opcao}
+              onChange={(e) => setOpcao(e.target.value)}
+            />
+            <MdAddCircle
+              className={styles.botaoAdicionar}
+              onClick={() => {
+                if (opcao && !isOpcaoExistente(opcao, opcoes)) {
+                  setOpcoes([...opcoes, opcao]);
+                }
+                setOpcao("");
+              }}
+            />
+          </div>
+          <div>
+            <ul>
+              {opcoes.map((opcao, i) => (
+                <li key={i}>
+                  {opcao}{" "}
+                  <FaTrash
+                    className={styles.lixeira}
+                    onClick={() =>
+                      setOpcoes(
+                        opcoes.filter(
+                          (item) => item.toLowerCase() !== opcao.toLowerCase()
+                        )
+                      )
+                    }
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <input type="submit" value="Adicionar" />
       </form>
     </div>
   );
