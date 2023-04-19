@@ -7,12 +7,12 @@
   align-items: center;
   background-color: #f1f1f1;
   border-radius: 12px;
+  box-shadow: 0 4px 8px #00000027;
 }
 
 .nome {
   display: flex;
   align-items: center;
-  gap: 0.5em;
 }
 
 .nome > h2 {
@@ -20,8 +20,17 @@
   color: #333;
 }
 
-.nome > a:visited {
-  color: #333;
+.atualizacao {
+  border-radius: 50%;
+  padding: 4px 6px;
+}
+
+.atualizacao > svg {
+  color: #555;
+}
+
+.atualizacao:hover {
+  background-color: #00000010;
 }
 
 .cpf {
@@ -54,4 +63,10 @@
   font-size: 0.95em;
   margin-left: 8px;
   color: #9c1f1f;
+}
+
+.labelTrouxe:hover,
+.labelNaoTrouxe:hover,
+input[name="trouxe"]:hover {
+  cursor: pointer;
 }
