@@ -1,0 +1,57 @@
+.article {
+  max-width: 800px;
+  min-width: 680px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f1f1f1;
+  border-radius: 12px;
+}
+
+.nome {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.nome > h2 {
+  font-size: 1.2em;
+  color: #333;
+}
+
+.nome > a:visited {
+  color: #333;
+}
+
+.cpf {
+  margin-top: 4px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.opcoes {
+  font-size: 1em;
+  color: #333;
+}
+
+.data {
+  font-size: 0.9em;
+  color: #333;
+}
+
+.divTrouxe {
+  margin-bottom: 8px;
+}
+
+.labelTrouxe {
+  font-size: 0.95em;
+  margin-left: 8px;
+  color: #17a617;
+}
+
+.labelNaoTrouxe {
+  font-size: 0.95em;
+  margin-left: 8px;
+  color: #9c1f1f;
+}

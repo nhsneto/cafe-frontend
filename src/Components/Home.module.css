@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.frase {
+  margin-left: 8px;
+  font: bold 1.8em "Lora", "Roboto", sans-serif;
+}
+
+.coffee {
+  width: 80px;
+  height: 80px;
+}
