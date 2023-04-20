@@ -9,6 +9,8 @@ function Cadastro() {
   const [dataCafe, setDataCafe] = useState("");
   const [opcao, setOpcao] = useState("");
   const [opcoes, setOpcoes] = useState([]);
+  const [mensagemErro, setMensagemErro] = useState("");
+  const [mensagemSucesso, setMensagemSucesso] = useState("");
 
   function getDataDeAmanha() {
     const data = new Date();
@@ -50,18 +52,28 @@ function Cadastro() {
       data: dataCafe,
     };
 
-    useEffect(() => {
-      fetch("http://localhost:8080/colaboradores", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(colaborador),
-      });
-    }, []);
+    fetch("http://localhost:8080/colaboradores", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(colaborador),
+    })
+      .then((res) => {
+        if (res.status === 201) {
+          setMensagemSucesso("Colaborador cadastrado com sucesso.");
+        }
 
-    console.log(JSON.stringify(colaborador));
-    console.log(location);
+        return res.json();
+      })
+      .then((data) => {
+        if (data.erro) {
+          setMensagemErro(data.erro);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     clearInputs();
   }
@@ -108,6 +120,9 @@ function Cadastro() {
         />
         <input type="submit" value="Adicionar" />
       </form>
+
+      {mensagemSucesso && <p>{mensagemSucesso}</p>}
+      {mensagemErro && <p>{mensagemErro}</p>}
     </div>
   );
 }
