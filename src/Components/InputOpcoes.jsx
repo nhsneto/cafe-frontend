@@ -3,12 +3,7 @@ import { FaTrash } from "react-icons/fa";
 import Input from "./Input";
 import styles from "./InputOpcoes.module.css";
 
-function InputOpcoes({
-  opcao,
-  opcaoList,
-  setterOpcaoList,
-  onChange,
-}) {
+function InputOpcoes({ opcao, opcaoList, setterOpcaoList, onChange }) {
   function isOpcaoExistente(opcao, opcoes) {
     for (const current of opcoes) {
       if (current.toUpperCase() === opcao.toUpperCase()) {
@@ -51,9 +46,9 @@ function InputOpcoes({
                   className={styles.lixeira}
                   onClick={() => {
                     const arr = [];
-                    for (const item of opcaoList) {
-                      if (item !== opcao) {
-                        arr.push(item);
+                    for (const opcaoNome of opcaoList) {
+                      if (item !== opcaoNome) {
+                        arr.push(opcaoNome);
                       }
                     }
                     setterOpcaoList(arr);

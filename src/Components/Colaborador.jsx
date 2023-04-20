@@ -48,10 +48,7 @@ function Colaborador({ colaborador }) {
       <div className={styles.nomeCpf}>
         <div className={styles.nome}>
           <h2>{colaborador.nome}</h2>
-          <Link
-            to={`/edicao/?id=${colaborador.id}`}
-            className={styles.atualizacao}
-          >
+          <Link to={`/edicao/${colaborador.id}`} className={styles.atualizacao}>
             {<MdCreate />}
           </Link>
         </div>

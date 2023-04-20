@@ -5,6 +5,11 @@ import InputOpcoes from "../Components/InputOpcoes";
 import { useParams } from "react-router-dom";
 
 function Edicao() {
+  const [nome, setNome] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [dataCafe, setDataCafe] = useState("");
+  const [opcao, setOpcao] = useState("");
+  const [opcoes, setOpcoes] = useState([]);
   const [colaborador, setColaborador] = useState({});
   const id = useParams().id;
 
@@ -20,11 +25,14 @@ function Edicao() {
       .catch((err) => console.log(err));
   }, []);
 
-  const [nome, setNome] = useState(colaborador.nome);
-  const [cpf, setCpf] = useState(colaborador.cpf);
-  const [dataCafe, setDataCafe] = useState(colaborador.data);
-  const [opcao, setOpcao] = useState("");
-  const [opcoes, setOpcoes] = useState(colaborador.opcoes);
+  useEffect(() => {
+    setNome(colaborador.nome || "");
+    setCpf(colaborador.cpf || "");
+    setDataCafe(colaborador.data || "");
+    setOpcoes(["teste1", "teste2"], "teste3");
+    colaborador.opcoes &&
+      setOpcoes(colaborador.opcoes.map((opcao) => opcao.nome));
+  }, [colaborador]);
 
   function getDataDeAmanha() {
     const data = new Date();
@@ -41,7 +49,7 @@ function Edicao() {
     return `${ano}-${mes}-${dia}`;
   }
 
-  function formataOpcoes(opcoes) {
+  function toOpcoesObjetos(opcoes) {
     const arr = [];
     for (const opcao of opcoes.toSorted()) {
       arr.push({ nome: opcao });
@@ -62,11 +70,10 @@ function Edicao() {
     const colaborador = {
       nome: nome,
       cpf: cpf,
-      opcoes: formataOpcoes(opcoes),
+      opcoes: toOpcoesObjetos(opcoes),
       data: dataCafe,
     };
 
-    // useEffect(() => {
     //   fetch("http://localhost:8080/colaboradores", {
     //     method: "PUT",
     //     headers: {
@@ -74,7 +81,6 @@ function Edicao() {
     //     },
     //     body: JSON.stringify(colaborador),
     //   });
-    // }, []);
 
     console.log(JSON.stringify(colaborador));
     console.log(location);
@@ -122,7 +128,7 @@ function Edicao() {
           setterOpcaoList={setOpcoes}
           onChange={(e) => setOpcao(e.target.value)}
         />
-        <input type="submit" value="Adicionar" />
+        <input type="submit" value="Atualizar" />
       </form>
     </div>
   );
