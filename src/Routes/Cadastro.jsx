@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styles from "./Cadastro.module.css";
-import { useLocation } from "react-router-dom";
 import Input from "../Components/Input";
 import InputOpcoes from "../Components/InputOpcoes";
 
@@ -10,8 +9,6 @@ function Cadastro() {
   const [dataCafe, setDataCafe] = useState("");
   const [opcao, setOpcao] = useState("");
   const [opcoes, setOpcoes] = useState([]);
-
-  const location = useLocation().pathname;
 
   function getDataDeAmanha() {
     const data = new Date();
@@ -71,7 +68,7 @@ function Cadastro() {
 
   return (
     <div className={styles.container}>
-      <h1>Adicionar Colaborador</h1>
+      <h1>Cadastro Colaborador</h1>
       <form onSubmit={adicionaColaborador} className={styles.form}>
         <Input
           label="Nome"
