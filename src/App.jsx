@@ -29,9 +29,9 @@ function App() {
 
       <main>
         {colaboradores &&
-          colaboradores.map((colaborador) => {
-            <Colaborador colaborador={colaborador} />;
-          })}
+          colaboradores.map((colaborador) => (
+            <Colaborador colaborador={colaborador} key={colaborador.id} />
+          ))}
       </main>
 
       <Link to="/cadastro">
