@@ -2,27 +2,22 @@ import { MdCreate } from "react-icons/md";
 import { Link } from "react-router-dom";
 import styles from "./Colaborador.module.css";
 
-function Colaborador() {
-  const nome = "Nelson Henrique";
-  const cpf = "123.123.123-12";
-  const opcoes = "Leite · Café · Bolacha";
-  const data = "19/04/2023";
-
+function Colaborador({ colaborador }) {
   return (
     <article className={styles.article}>
       <div className={styles.nomeCpf}>
         <div className={styles.nome}>
-          <h2>{nome}</h2>
-          <Link to={"/edicao"} className={styles.atualizacao}>
+          <h2>{colaborador.nome}</h2>
+          <Link to={`/edicao/?id=${colaborador.id}`} className={styles.atualizacao}>
             {<MdCreate />}
           </Link>
         </div>
-        <p className={styles.cpf}>{cpf}</p>
+        <p className={styles.cpf}>{colaborador.cpf}</p>
       </div>
 
-      <p className={styles.opcoes}>{opcoes}</p>
+      <p className={styles.opcoes}>{colaborador.opcoes}</p>
 
-      <p className={styles.data}>{data}</p>
+      <p className={styles.data}>{colaborador.data}</p>
 
       <div>
         <div className={styles.divTrouxe}>

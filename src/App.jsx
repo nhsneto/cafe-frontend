@@ -3,8 +3,23 @@ import Colaborador from "./Components/Colaborador";
 import { MdAddCircle } from "react-icons/md";
 import { Link } from "react-router-dom";
 import styles from "./App.module.css";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [colaboradores, setColaboradores] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost.com/8080/colaboradores", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setColaboradores(data))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div className={styles.app}>
       <header className={styles.header}>
@@ -13,8 +28,10 @@ function App() {
       </header>
 
       <main>
-        <p>19/04/2023</p>
-        <Colaborador />
+        {colaboradores &&
+          colaboradores.map((colaborador) => {
+            <Colaborador colaborador={colaborador} />;
+          })}
       </main>
 
       <Link to="/cadastro">
