@@ -9,7 +9,7 @@ function App() {
   const [colaboradores, setColaboradores] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost.com/8080/colaboradores", {
+    fetch("http://localhost:8080/colaboradores", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

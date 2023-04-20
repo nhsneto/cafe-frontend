@@ -50,15 +50,15 @@ function Cadastro() {
       data: dataCafe,
     };
 
-    // useEffect(() => {
-    //   fetch("http://localhost:8080/colaboradores", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(colaborador),
-    //   });
-    // }, []);
+    useEffect(() => {
+      fetch("http://localhost:8080/colaboradores", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(colaborador),
+      });
+    }, []);
 
     console.log(JSON.stringify(colaborador));
     console.log(location);
