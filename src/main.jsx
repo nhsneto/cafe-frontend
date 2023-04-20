@@ -8,7 +8,7 @@ import Edicao from "./Routes/Edicao";
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
   { path: "cadastro", element: <Cadastro /> },
-  { path: "edicao", element: <Edicao /> },
+  { path: "edicao/:id", element: <Edicao /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
