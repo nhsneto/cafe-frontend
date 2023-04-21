@@ -5,6 +5,11 @@ function Mensagem({ tipo, texto }) {
   const [exibir, setExibir] = useState(false);
 
   useEffect(() => {
+    if (!texto) {
+      setExibir(false);
+      return;
+    }
+
     setExibir(true);
 
     const tempoMilli = tipo === "sucesso" ? 3000 : 5000;

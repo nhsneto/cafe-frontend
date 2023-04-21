@@ -4,7 +4,7 @@ import Input from "../Components/Input";
 import InputOpcoes from "../Components/InputOpcoes";
 import { FaTrash } from "react-icons/fa";
 import { MdArrowBack } from "react-icons/md";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import Mensagem from "../Components/Mensagem";
 
 function Edicao() {
@@ -16,8 +16,8 @@ function Edicao() {
   const [colaborador, setColaborador] = useState({});
   const [mensagemErro, setMensagemErro] = useState("");
   const [mensagemSucesso, setMensagemSucesso] = useState("");
-  const [mensagemRemocao, setmensagemRemocao] = useState("");
   const id = useParams().id;
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`http://localhost:8080/colaboradores/${id}`, {
@@ -103,7 +103,7 @@ function Edicao() {
     })
       .then((res) => {
         if (res.status === 204) {
-          setmensagemRemocao("Colaborador removido com sucesso.");
+          navigate("/");
         }
       })
       .catch((err) => console.log(err));
@@ -173,7 +173,6 @@ function Edicao() {
 
         {mensagemSucesso && <Mensagem tipo="sucesso" texto={mensagemSucesso} />}
         {mensagemErro && <Mensagem tipo="erro" texto={mensagemErro} />}
-        {mensagemRemocao && <p>{mensagemRemocao}</p>}
       </form>
     </div>
   );
