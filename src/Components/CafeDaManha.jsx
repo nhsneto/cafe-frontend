@@ -19,17 +19,20 @@ function CafeDaManha({ colaboradores, dataCafe }) {
         arr.push(colaborador);
       }
     }
+    arr.sort((a, b) => {
+      if (a.nome > b.nome) return 1;
+      if (a.nome < b.nome) return -1;
+      return 0;
+    });
     return arr;
   }
 
   return (
     <section className={styles.container}>
       <h2>{formataData(dataCafe)}</h2>
-      <div className={styles.colaboradores}>
-        {getColaboradoresPorData(dataCafe).map((colaborador) => (
-          <Colaborador colaborador={colaborador} key={colaborador.id} />
-        ))}
-      </div>
+      {getColaboradoresPorData(dataCafe).map((colaborador) => (
+        <Colaborador colaborador={colaborador} key={colaborador.id} />
+      ))}
     </section>
   );
 }

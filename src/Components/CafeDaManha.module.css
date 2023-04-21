@@ -1,0 +1,11 @@
+.container {
+  margin-bottom: 3em;
+}
+
+.container > h2 {
+  margin-left: 0.7em;
+  margin-bottom: 0.7em;
+  font: italic bold 1.2em 'Lora', 'Roboto', sans-serif;
+  text-align: center;
+  color: #333;
+}
