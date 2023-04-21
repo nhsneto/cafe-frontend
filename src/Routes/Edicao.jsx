@@ -11,6 +11,9 @@ function Edicao() {
   const [opcao, setOpcao] = useState("");
   const [opcoes, setOpcoes] = useState([]);
   const [colaborador, setColaborador] = useState({});
+  const [mensagemErro, setMensagemErro] = useState("");
+  const [mensagemSucesso, setMensagemSucesso] = useState("");
+  const [mensagemRemocao, setmensagemRemocao] = useState("");
   const id = useParams().id;
 
   useEffect(() => {
@@ -29,7 +32,6 @@ function Edicao() {
     setNome(colaborador.nome || "");
     setCpf(colaborador.cpf || "");
     setDataCafe(colaborador.data || "");
-    setOpcoes(["teste1", "teste2"], "teste3");
     colaborador.opcoes &&
       setOpcoes(colaborador.opcoes.map((opcao) => opcao.nome));
   }, [colaborador]);
@@ -57,13 +59,6 @@ function Edicao() {
     return arr;
   }
 
-  function clearInputs() {
-    setNome("");
-    setCpf("");
-    setDataCafe("");
-    setOpcoes([]);
-  }
-
   function atualizaColaborador(e) {
     e.preventDefault();
 
@@ -74,18 +69,41 @@ function Edicao() {
       data: dataCafe,
     };
 
-    //   fetch("http://localhost:8080/colaboradores", {
-    //     method: "PUT",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(colaborador),
-    //   });
+    fetch(`http://localhost:8080/colaboradores/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(colaborador),
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          setMensagemSucesso("Colaborador atualizado com sucesso.");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        if (data.erro) {
+          setMensagemErro(data.erro);
+        }
+      })
+      .catch((err) => console.log(err));
+  }
 
-    console.log(JSON.stringify(colaborador));
-    console.log(location);
-
-    clearInputs();
+  function removeColaborador(id) {
+    fetch(`http://localhost:8080/colaboradores/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(colaborador),
+    })
+      .then((res) => {
+        if (res.status === 204) {
+          setmensagemRemocao("Colaborador removido com sucesso.");
+        }
+      })
+      .catch((err) => console.log(err));
   }
 
   return (
@@ -129,6 +147,12 @@ function Edicao() {
           onChange={(e) => setOpcao(e.target.value)}
         />
         <input type="submit" value="Atualizar" />
+        <button type="button" onClick={() => removeColaborador(id)}>
+          Excluir Colaborador
+        </button>
+        {mensagemSucesso && <p>{mensagemSucesso}</p>}
+        {mensagemErro && <p>{mensagemErro}</p>}
+        {mensagemRemocao && <p>{mensagemRemocao}</p>}
       </form>
     </div>
   );
