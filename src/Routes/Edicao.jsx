@@ -3,8 +3,9 @@ import styles from "./Edicao.module.css";
 import Input from "../Components/Input";
 import InputOpcoes from "../Components/InputOpcoes";
 import { FaTrash } from "react-icons/fa";
-import { MdClose, MdArrowBack } from "react-icons/md";
+import { MdArrowBack } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
+import Mensagem from "../Components/Mensagem";
 
 function Edicao() {
   const [nome, setNome] = useState("");
@@ -170,8 +171,8 @@ function Edicao() {
           </a>
         </div>
 
-        {mensagemSucesso && <p>{mensagemSucesso}</p>}
-        {mensagemErro && <p>{mensagemErro}</p>}
+        {mensagemSucesso && <Mensagem tipo="sucesso" texto={mensagemSucesso} />}
+        {mensagemErro && <Mensagem tipo="erro" texto={mensagemErro} />}
         {mensagemRemocao && <p>{mensagemRemocao}</p>}
       </form>
     </div>
