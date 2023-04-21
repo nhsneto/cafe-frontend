@@ -4,6 +4,7 @@ import Input from "../Components/Input";
 import InputOpcoes from "../Components/InputOpcoes";
 import { Link } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
+import Mensagem from "../Components/Mensagem";
 
 function Cadastro() {
   const [nome, setNome] = useState("");
@@ -63,7 +64,8 @@ function Cadastro() {
     })
       .then((res) => {
         if (res.status === 201) {
-          setMensagemSucesso("Colaborador cadastrado com sucesso.");
+          setMensagemSucesso("Colaborador cadastrado com sucesso!");
+          clearInputs();
         }
 
         return res.json();
@@ -76,8 +78,6 @@ function Cadastro() {
       .catch((err) => {
         console.log(err);
       });
-
-    clearInputs();
   }
 
   return (
@@ -133,8 +133,8 @@ function Cadastro() {
         />
       </form>
 
-      {mensagemSucesso && <p>{mensagemSucesso}</p>}
-      {mensagemErro && <p>{mensagemErro}</p>}
+      {mensagemSucesso && <Mensagem tipo="sucesso" texto={mensagemSucesso} />}
+      {mensagemErro && <Mensagem tipo="erro" texto={mensagemErro} />}
     </div>
   );
 }
