@@ -86,7 +86,7 @@ function Cadastro() {
         <MdArrowBack className={styles.botaoVoltar} />
       </Link>
 
-      <h1>Cadastro Colaborador</h1>
+      <h1>Adicionar Colaborador</h1>
 
       <form onSubmit={adicionaColaborador} className={styles.form}>
         <Input
@@ -128,7 +128,7 @@ function Cadastro() {
         />
         <input
           type="submit"
-          value="Adicionar Colaborador"
+          value="Adicionar"
           className={styles.botaoAdicionar}
         />
       </form>
