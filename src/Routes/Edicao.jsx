@@ -11,6 +11,7 @@ function Edicao() {
   const [nome, setNome] = useState("");
   const [cpf, setCpf] = useState("");
   const [dataCafe, setDataCafe] = useState("");
+  const [trouxe, setTrouxe] = useState(false);
   const [opcao, setOpcao] = useState("");
   const [opcoes, setOpcoes] = useState([]);
   const [colaborador, setColaborador] = useState({});
@@ -35,6 +36,7 @@ function Edicao() {
     setNome(colaborador.nome || "");
     setCpf(colaborador.cpf || "");
     setDataCafe(colaborador.data || "");
+    setTrouxe(colaborador.trouxe || false);
     colaborador.opcoes &&
       setOpcoes(colaborador.opcoes.map((opcao) => opcao.nome));
   }, [colaborador]);
@@ -70,6 +72,7 @@ function Edicao() {
       cpf: cpf,
       opcoes: toOpcoesObjetos(opcoes),
       data: dataCafe,
+      trouxe: trouxe,
     };
 
     fetch(`http://localhost:8080/colaboradores/${id}`, {
