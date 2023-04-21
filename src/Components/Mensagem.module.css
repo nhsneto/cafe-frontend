@@ -1,6 +1,6 @@
 .sucesso {
   width: fit-content;
-  padding: 1.5em 3em;
+  padding: 1em 2em;
   border-radius: 0.5em;
   font-weight: 800;
   background-color: #abe0b8;
@@ -12,7 +12,7 @@
 
 .erro {
   width: fit-content;
-  padding: 1.5em 3em;
+  padding: 1em 2em;
   border-radius: 0.5em;
   font-weight: 800;
   background-color: #fb9b9b;

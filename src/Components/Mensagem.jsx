@@ -1,10 +1,28 @@
+import { useEffect, useState } from "react";
 import styles from "./Mensagem.module.css";
 
 function Mensagem({ tipo, texto }) {
+  const [exibir, setExibir] = useState(false);
+
+  useEffect(() => {
+    setExibir(true);
+
+    const tempoMilli = tipo === "sucesso" ? 3000 : 5000;
+    const timer = setTimeout(() => {
+      setExibir(false);
+    }, tempoMilli);
+
+    return () => clearTimeout(timer);
+  }, [texto]);
+
   return (
-    <div className={tipo === "sucesso" ? styles.sucesso : styles.erro}>
-      <p className={styles}>{texto}</p>
-    </div>
+    <>
+      {exibir && (
+        <div className={tipo === "sucesso" ? styles.sucesso : styles.erro}>
+          <p className={styles}>{texto}</p>
+        </div>
+      )}
+    </>
   );
 }
 
