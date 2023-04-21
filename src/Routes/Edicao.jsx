@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import styles from "./Cadastro.module.css";
+import styles from "./Edicao.module.css";
 import Input from "../Components/Input";
 import InputOpcoes from "../Components/InputOpcoes";
-import { useParams } from "react-router-dom";
+import { FaTrash } from "react-icons/fa";
+import { MdClose, MdArrowBack } from "react-icons/md";
+import { Link, useParams } from "react-router-dom";
 
 function Edicao() {
   const [nome, setNome] = useState("");
@@ -108,7 +110,12 @@ function Edicao() {
 
   return (
     <div className={styles.container}>
+      <Link to="/" className={styles.botaoVoltarContainer}>
+        <MdArrowBack className={styles.botaoVoltar} />
+      </Link>
+
       <h1>Editar Colaborador</h1>
+
       <form onSubmit={atualizaColaborador} className={styles.form}>
         <Input
           label="Nome"
@@ -146,10 +153,23 @@ function Edicao() {
           setterOpcaoList={setOpcoes}
           onChange={(e) => setOpcao(e.target.value)}
         />
-        <input type="submit" value="Atualizar" />
-        <button type="button" onClick={() => removeColaborador(id)}>
-          Excluir Colaborador
-        </button>
+
+        <input
+          type="submit"
+          value="Atualizar"
+          className={styles.botaoAtualizar}
+        />
+
+        <div className={styles.removerContainer}>
+          <a
+            type="button"
+            className={styles.botaoRemover}
+            onClick={() => removeColaborador(id)}
+          >
+            <FaTrash /> Excluir Colaborador
+          </a>
+        </div>
+
         {mensagemSucesso && <p>{mensagemSucesso}</p>}
         {mensagemErro && <p>{mensagemErro}</p>}
         {mensagemRemocao && <p>{mensagemRemocao}</p>}

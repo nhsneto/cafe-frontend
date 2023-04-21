@@ -1,3 +1,36 @@
-.lixeira {
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.botaoAdicionar {
+  margin-left: 1em;
+  width: 2em;
+  height: 2em;
+  color: #333;
+}
+
+.botaoAdicionar:hover {
   cursor: pointer;
+}
+
+.listaOpcoes {
+  display: flex;
+  flex-direction: column;
+  font: italic 800 1em "Lora", "Roboto", sans-serif;
+  gap: 0.5em;
+}
+
+.listaOpcoes > li {
+  list-style: none;
+}
+
+.remover {
+  border-radius: 50%;
+  color: #333;
+  cursor: pointer;
+}
+
+.remover:hover {
+  background-color: #00000015;
 }

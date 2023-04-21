@@ -1,3 +1,5 @@
+import styles from "./Input.module.css";
+
 function Input({
   id,
   label,
@@ -13,9 +15,12 @@ function Input({
   onFocus,
 }) {
   return (
-    <div>
-      <label htmlFor={id}>{label}</label>
+    <div className={styles.container}>
+      <label htmlFor={id} className={styles.label}>
+        {label}
+      </label>
       <input
+        className={styles.input}
         id={id}
         type={type}
         title={title}

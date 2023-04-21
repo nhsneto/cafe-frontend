@@ -1,5 +1,5 @@
 import { MdAddCircle } from "react-icons/md";
-import { FaTrash } from "react-icons/fa";
+import { MdClose } from "react-icons/md";
 import Input from "./Input";
 import styles from "./InputOpcoes.module.css";
 
@@ -15,8 +15,8 @@ function InputOpcoes({ opcao, opcaoList, setterOpcaoList, onChange }) {
   }
 
   return (
-    <div className={styles.container}>
-      <div>
+    <div>
+      <div className={styles.container}>
         <Input
           label="Opção"
           id="opcao"
@@ -37,13 +37,13 @@ function InputOpcoes({ opcao, opcaoList, setterOpcaoList, onChange }) {
       </div>
 
       <div>
-        <ul>
+        <ul className={styles.listaOpcoes}>
           {opcaoList &&
             opcaoList.map((item, i) => (
               <li key={i}>
                 {item}{" "}
-                <FaTrash
-                  className={styles.lixeira}
+                <MdClose
+                  className={styles.remover}
                   onClick={() => {
                     const arr = [];
                     for (const opcaoNome of opcaoList) {

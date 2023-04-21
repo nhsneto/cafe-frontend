@@ -2,6 +2,8 @@ import { useState } from "react";
 import styles from "./Cadastro.module.css";
 import Input from "../Components/Input";
 import InputOpcoes from "../Components/InputOpcoes";
+import { Link } from "react-router-dom";
+import { MdArrowBack } from "react-icons/md";
 
 function Cadastro() {
   const [nome, setNome] = useState("");
@@ -80,7 +82,12 @@ function Cadastro() {
 
   return (
     <div className={styles.container}>
+      <Link to="/" className={styles.botaoVoltarContainer}>
+        <MdArrowBack className={styles.botaoVoltar} />
+      </Link>
+
       <h1>Cadastro Colaborador</h1>
+
       <form onSubmit={adicionaColaborador} className={styles.form}>
         <Input
           label="Nome"
@@ -95,6 +102,7 @@ function Cadastro() {
           label="CPF"
           id="cpf"
           type="text"
+          placeholder="00000000000"
           maxLength="11"
           pattern="[0-9]{11}"
           title="O CPF deve conter 11 caracteres numéricos."
@@ -118,7 +126,11 @@ function Cadastro() {
           setterOpcaoList={setOpcoes}
           onChange={(e) => setOpcao(e.target.value)}
         />
-        <input type="submit" value="Adicionar" />
+        <input
+          type="submit"
+          value="Adicionar Colaborador"
+          className={styles.botaoAdicionar}
+        />
       </form>
 
       {mensagemSucesso && <p>{mensagemSucesso}</p>}
