@@ -1,9 +1,9 @@
 import coffee from "./assets/coffee.svg";
-import Colaborador from "./Components/Colaborador";
 import { MdAddCircle } from "react-icons/md";
 import { Link } from "react-router-dom";
 import styles from "./App.module.css";
 import { useEffect, useState } from "react";
+import CafeDaManha from "./Components/CafeDaManha";
 
 function App() {
   const [colaboradores, setColaboradores] = useState([]);
@@ -20,6 +20,11 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
+  function getDatasCafe(colaboradores) {
+    const datas = new Set(colaboradores.map((colaborador) => colaborador.data));
+    return Array.from(datas).sort();
+  }
+
   return (
     <div className={styles.app}>
       <header className={styles.header}>
@@ -29,8 +34,12 @@ function App() {
 
       <main>
         {colaboradores &&
-          colaboradores.map((colaborador) => (
-            <Colaborador colaborador={colaborador} key={colaborador.id} />
+          getDatasCafe(colaboradores).map((dataCafe, i) => (
+            <CafeDaManha
+              colaboradores={colaboradores}
+              dataCafe={dataCafe}
+              key={i}
+            />
           ))}
       </main>
 
