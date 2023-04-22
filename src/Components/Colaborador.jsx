@@ -56,13 +56,16 @@ function Colaborador({ colaborador }) {
       colaborador.trouxe = false;
     }
 
-    fetch(`http://localhost:8080/colaboradores/${colaborador.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(colaborador),
-    })
+    fetch(
+      `https://desafio-production.up.railway.app/colaboradores/${colaborador.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(colaborador),
+      }
+    )
       .then((res) => res.json())
       .then((data) => data)
       .catch((err) => console.log(err));

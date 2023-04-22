@@ -21,7 +21,7 @@ function Edicao() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:8080/colaboradores/${id}`, {
+    fetch(`https://desafio-production.up.railway.app/colaboradores/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -75,7 +75,7 @@ function Edicao() {
       trouxe: trouxe,
     };
 
-    fetch(`http://localhost:8080/colaboradores/${id}`, {
+    fetch(`https://desafio-production.up.railway.app/colaboradores/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -97,7 +97,7 @@ function Edicao() {
   }
 
   function removeColaborador(id) {
-    fetch(`http://localhost:8080/colaboradores/${id}`, {
+    fetch(`https://desafio-production.up.railway.app/colaboradores/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

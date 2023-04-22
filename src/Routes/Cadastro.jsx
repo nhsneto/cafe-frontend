@@ -55,7 +55,7 @@ function Cadastro() {
       data: dataCafe,
     };
 
-    fetch("http://localhost:8080/colaboradores", {
+    fetch("https://desafio-production.up.railway.app/colaboradores", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
