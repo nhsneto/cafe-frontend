@@ -1,23 +1,29 @@
-.sucesso {
-  width: fit-content;
-  padding: 1em 2em;
-  border-radius: 0.5em;
-  font-weight: 800;
-  background-color: #abe0b8;
-  color: #4a614f;
-  position: fixed;
-  right: 40px;
-  top: 20px;
-}
-
+.sucesso,
 .erro {
   width: fit-content;
   padding: 1em 2em;
   border-radius: 0.5em;
   font-weight: 800;
-  background-color: #fb9b9b;
-  color: #7a2727;
   position: fixed;
   right: 40px;
   top: 20px;
+}
+
+.sucesso {
+  background-color: #abe0b8;
+  color: #4a614f;
+}
+
+.erro {
+  background-color: #fb9b9b;
+  color: #7a2727;
+}
+
+@media screen and (max-width: 428px) {
+  .sucesso,
+  .erro {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+  }
 }

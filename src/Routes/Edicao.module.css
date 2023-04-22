@@ -67,3 +67,25 @@
 .botaoVoltarContainer:visited {
   color: #333;
 }
+
+@media screen and (max-width: 428px) {
+  .container {
+    padding: 20px;
+    box-shadow: none;
+    border-radius: none;
+    padding-top: 0px;
+  }
+
+  .container > h1 {
+    font: bold 1.48em "Lora", "Roboto", sans-serif;
+  }
+
+  .botaoAtualizar {
+    padding: 0.8em 0em;
+    font: bold 1em "Lora", "Roboto", sans-serif;
+  }
+
+  .botaoRemover {
+    font-size: 0.8em;
+  }
+}
