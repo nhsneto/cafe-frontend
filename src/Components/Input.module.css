@@ -18,3 +18,13 @@
   border: none;
   border-radius: 0.24em;
 }
+
+@media screen and (max-width: 428px) {
+  .label {
+    font-size: 1em;
+  }
+
+  .input {
+    font-size: 1em;
+  }
+}
