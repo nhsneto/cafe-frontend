@@ -126,6 +126,8 @@ function Edicao() {
           id="nome"
           type="text"
           placeholder="Nome Sobrenome"
+          pattern="[a-zA-Z]{2,}"
+          title="Nome e sobrenome."
           value={nome}
           onChange={(e) => setNome(e.target.value)}
         />
