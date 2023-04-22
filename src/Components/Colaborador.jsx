@@ -68,6 +68,21 @@ function Colaborador({ colaborador }) {
       .catch((err) => console.log(err));
   }
 
+  function isHojeDataDoCafe(dataCafe) {
+    let dataDeHoje = new Date();
+    let dia = dataDeHoje.getDate();
+    let mes = dataDeHoje.getMonth() + 1;
+    const ano = dataDeHoje.getFullYear();
+    if (dia < 10) {
+      dia = `0${dia}`;
+    }
+    if (mes < 10) {
+      mes = `0${mes}`;
+    }
+    dataDeHoje = `${ano}-${mes}-${dia}`;
+    return dataDeHoje === dataCafe;
+  }
+
   return (
     <article className={styles.article}>
       <div className={styles.nomeContainer}>
@@ -80,45 +95,51 @@ function Colaborador({ colaborador }) {
         <p className={styles.cpf}>{formataCPF(colaborador.cpf)}</p>
       </div>
 
-      <p className={styles.opcoes}>{formataOpcoes(colaborador.opcoes)}</p>
-
-      <p className={styles.data}>{formataData(colaborador.data)}</p>
-
-      <div className={styles.trouxeContainer}>
-        <div className={styles.divTrouxe}>
-          <input
-            type="radio"
-            name={`trouxe-${colaborador.id}`}
-            id={`trouxe-${colaborador.id}`}
-            onClick={(e) => atualizaTrouxe(e, colaborador)}
-            defaultChecked={colaborador.trouxe && true}
-            onChange={() => setTrouxe(true)}
-          />
-          <label
-            htmlFor={`trouxe-${colaborador.id}`}
-            className={styles.labelTrouxe}
-          >
-            Trouxe
-          </label>
-        </div>
-
-        <div>
-          <input
-            type="radio"
-            name={`trouxe-${colaborador.id}`}
-            id={`naoTrouxe-${colaborador.id}`}
-            onClick={(e) => atualizaTrouxe(e, colaborador)}
-            defaultChecked={!colaborador.trouxe && true}
-            onChange={() => setTrouxe(false)}
-          />
-          <label
-            htmlFor={`naoTrouxe-${colaborador.id}`}
-            className={styles.labelNaoTrouxe}
-          >
-            Não Trouxe
-          </label>
-        </div>
+      <div className={styles.opcoesContainer}>
+        <p className={styles.opcoes}>{formataOpcoes(colaborador.opcoes)}</p>
       </div>
+
+      <div className={styles.dataContainer}>
+        <p className={styles.data}>{formataData(colaborador.data)}</p>
+      </div>
+
+      {isHojeDataDoCafe(colaborador.data) && (
+        <div className={styles.trouxeContainer}>
+          <div className={styles.divTrouxe}>
+            <input
+              type="radio"
+              name={`trouxe-${colaborador.id}`}
+              id={`trouxe-${colaborador.id}`}
+              onClick={(e) => atualizaTrouxe(e, colaborador)}
+              defaultChecked={colaborador.trouxe && true}
+              onChange={() => setTrouxe(true)}
+            />
+            <label
+              htmlFor={`trouxe-${colaborador.id}`}
+              className={styles.labelTrouxe}
+            >
+              Trouxe
+            </label>
+          </div>
+
+          <div>
+            <input
+              type="radio"
+              name={`trouxe-${colaborador.id}`}
+              id={`naoTrouxe-${colaborador.id}`}
+              onClick={(e) => atualizaTrouxe(e, colaborador)}
+              defaultChecked={!colaborador.trouxe && true}
+              onChange={() => setTrouxe(false)}
+            />
+            <label
+              htmlFor={`naoTrouxe-${colaborador.id}`}
+              className={styles.labelNaoTrouxe}
+            >
+              Não Trouxe
+            </label>
+          </div>
+        </div>
+      )}
     </article>
   );
 }

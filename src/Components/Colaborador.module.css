@@ -43,14 +43,25 @@
   color: #555;
 }
 
-.opcoes {
+.opcoesContainer {
   flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.opcoes {
   font-size: 1em;
   color: #333;
 }
 
-.data {
+.dataContainer {
   flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.data {
+  /* flex: 1; */
   font-size: 0.9em;
   color: #333;
 }
