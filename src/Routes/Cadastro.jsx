@@ -95,7 +95,7 @@ function Cadastro() {
           type="text"
           placeholder="Nome Sobrenome"
           pattern="^[a-zA-Z\s]{2,}$"
-          title="Nome e sobrenome."
+          title="Utilize apenas letras. Informe nome e/ou sobrenome."
           value={nome}
           onChange={(e) => setNome(e.target.value)}
         />
