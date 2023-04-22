@@ -70,7 +70,7 @@ function Colaborador({ colaborador }) {
 
   return (
     <article className={styles.article}>
-      <div className={styles.nomeCpf}>
+      <div className={styles.nomeContainer}>
         <div className={styles.nome}>
           <h2>{colaborador.nome}</h2>
           <Link to={`/edicao/${colaborador.id}`} className={styles.atualizacao}>
@@ -84,7 +84,7 @@ function Colaborador({ colaborador }) {
 
       <p className={styles.data}>{formataData(colaborador.data)}</p>
 
-      <div>
+      <div className={styles.trouxeContainer}>
         <div className={styles.divTrouxe}>
           <input
             type="radio"

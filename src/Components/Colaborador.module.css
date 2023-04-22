@@ -1,11 +1,15 @@
 .article {
+  margin-bottom: 1em;
   padding: 10px 20px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   background-color: #f1f1f1;
   border-radius: 12px;
   box-shadow: 0 4px 8px #00000027;
+}
+
+.nomeContainer {
+  flex: 1;
 }
 
 .nome {
@@ -40,13 +44,19 @@
 }
 
 .opcoes {
+  flex: 1;
   font-size: 1em;
   color: #333;
 }
 
 .data {
+  flex: 1;
   font-size: 0.9em;
   color: #333;
+}
+
+.trouxeContainer {
+  flex: 1;
 }
 
 .divTrouxe {
