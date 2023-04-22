@@ -26,7 +26,7 @@ function App() {
   }
 
   return (
-    <div className={styles.app}>
+    <div className={styles.container}>
       <header className={styles.header}>
         <img src={coffee} alt="Xícara de Café" className={styles.coffee} />
         <h1 className={styles.frase}>Café da Manhã</h1>

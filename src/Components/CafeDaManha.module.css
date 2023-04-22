@@ -5,6 +5,12 @@
 .container > h2 {
   margin-left: 0.7em;
   margin-bottom: 0.7em;
-  font: italic bold 1.2em 'Lora', 'Roboto', sans-serif;
+  font: italic bold 1.2em "Lora", "Roboto", sans-serif;
   color: #333;
+}
+
+@media screen and (max-width: 428px) {
+  .container > h2 {
+    font: italic bold 1em "Lora", "Roboto", sans-serif;
+  }
 }

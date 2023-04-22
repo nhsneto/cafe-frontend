@@ -7,8 +7,21 @@
   text-decoration: none;
 }
 
+html,
+body {
+  min-height: 100vh;
+}
+
 body {
   display: flex;
   justify-content: center;
   font-family: "Roboto", Arial, sans-serif;
+}
+
+@media screen and (max-width: 428px) {
+  body {
+    display: block;
+    justify-content: none;
+    background-color: antiquewhite;
+  }
 }

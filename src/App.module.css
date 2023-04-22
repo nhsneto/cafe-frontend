@@ -1,7 +1,8 @@
-.app {
+.container {
   width: 1000px;
   display: flex;
   flex-direction: column;
+  gap: 24px;
   margin: 32px;
   padding: 32px;
   border-radius: 16px;
@@ -12,7 +13,6 @@
 .header {
   display: flex;
   align-items: center;
-  margin-bottom: 24px;
 }
 
 .frase {
@@ -37,18 +37,18 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .app {
+  .container {
     width: 640px;
   }
 
   .botaoAdicionar {
-    right: 40px;
-    bottom: 40px;
+    right: 32px;
+    bottom: 32px;
   }
 }
 
 @media screen and (max-width: 720px) {
-  .app {
+  .container {
     width: 480px;
   }
 
@@ -58,13 +58,21 @@
   }
 }
 
-@media screen and (max-width: 414px) {
-  .app {
-    width: 20px;
+@media screen and (max-width: 428px) {
+  .container {
+    width: 100%;
+    margin: 0px;
+    padding: 8px 2em 0px 2em;
+    border-radius: 0px;
+    box-shadow: none;
+  }
+
+  .frase {
+    font: bold 1.5em "Lora", "Roboto", sans-serif;
   }
 
   .botaoAdicionar {
-    right: 24px;
-    bottom: 24px;
-  }
+    right: 8px;
+    bottom: 8px;
+  } 
 }

@@ -80,3 +80,47 @@
 input[name="trouxe"]:hover {
   cursor: pointer;
 }
+
+@media screen and (max-width: 428px) {
+  .article {
+    flex-direction: column;
+    gap: 0.5em;
+  }
+
+  .nomeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nome > h2 {
+    font-size: 1em;
+  }
+
+  .cpf {
+    margin-top: -4px;
+    font-size: 0.7em;
+  }
+
+  .opcoes {
+    font-size: 0.8em;
+    font-weight: bold;
+  }
+
+  .data {
+    font-size: 0.7em;
+  }
+
+  .labelTrouxe {
+    font-size: 0.7em;
+  }
+
+  .labelNaoTrouxe {
+    font-size: 0.7em;
+  }
+
+  .trouxeContainer {
+    display: flex;
+    gap: 20px;
+  }
+}
