@@ -16,10 +16,15 @@ body {
   display: flex;
   justify-content: center;
   font-family: "Roboto", Arial, sans-serif;
+  background-image: url("./assets/pexels-jason-villanueva-851555.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 @media screen and (max-width: 428px) {
   body {
+    background-image: none;
     display: block;
     justify-content: none;
     background-color: antiquewhite;
