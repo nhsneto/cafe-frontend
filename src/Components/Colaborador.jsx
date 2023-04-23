@@ -86,6 +86,25 @@ function Colaborador({ colaborador }) {
     return dataDeHoje === dataCafe;
   }
 
+  function getDataISO(data) {
+    let dia = data.getDate();
+    let mes = data.getMonth() + 1;
+    const ano = data.getFullYear();
+    if (dia < 10) {
+      dia = `0${dia}`;
+    }
+    if (mes < 10) {
+      mes = `0${mes}`;
+    }
+    return `${ano}-${mes}-${dia}`;
+  }
+
+  function dataDoCafePassou(data) {
+    const dataDeHoje = new Date(getDataISO(new Date()));
+    const dataDoCafe = new Date(data).getTime();
+    return dataDoCafe < dataDeHoje;
+  }
+
   return (
     <article className={styles.article}>
       <div className={styles.nomeContainer}>
@@ -115,6 +134,7 @@ function Colaborador({ colaborador }) {
               id={`trouxe-${colaborador.id}`}
               onClick={(e) => atualizaTrouxe(e, colaborador)}
               defaultChecked={colaborador.trouxe && true}
+              disabled={dataDoCafePassou(colaborador.data)}
               onChange={() => setTrouxe(true)}
             />
             <label
@@ -132,6 +152,7 @@ function Colaborador({ colaborador }) {
               id={`naoTrouxe-${colaborador.id}`}
               onClick={(e) => atualizaTrouxe(e, colaborador)}
               defaultChecked={!colaborador.trouxe && true}
+              disabled={dataDoCafePassou(colaborador.data)}
               onChange={() => setTrouxe(false)}
             />
             <label
